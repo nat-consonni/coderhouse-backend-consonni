@@ -1,0 +1,23 @@
+{
+  "name": "coderhouse-backend-entrega1",
+  "version": "1.0.0",
+  "description": "Entrega 1 - API de productos y carritos con Node.js, Express y persistencia en filesystem",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/app.js",
+    "start": "node src/app.js",
+    "seed": "node src/utils/seed.js"
+  },
+  "keywords": [
+    "coderhouse",
+    "backend",
+    "express",
+    "filesystem"
+  ],
+  "author": "Natalia Consonni",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "0225ad3f-34e1-40a6-a2d7-6c798beb267f",
+    "title": "Silla Divino",
+    "description": "Silla de madera",
+    "code": "CHA-001",
+    "price": 120,
+    "status": true,
+    "stock": 15,
+    "category": "chairs",
+    "thumbnails": []
+  },
+  {
+    "id": "085b7137-55f6-4c56-a8c5-6ea25c300b2d",
+    "title": "Mesa Punta",
+    "description": "Mesa ratona",
+    "code": "TAB-101",
+    "price": 280,
+    "status": true,
+    "stock": 7,
+    "category": "tables",
+    "thumbnails": []
+  },
+  {
+    "id": "0260e98c-771e-43a4-8abe-ad579ae221e6",
+    "title": "Lampara Faro",
+    "description": "Lampara de mesa",
+    "code": "LAM-555",
+    "price": 99,
+    "status": true,
+    "stock": 20,
+    "category": "lighting",
+    "thumbnails": []
+  }
+]
