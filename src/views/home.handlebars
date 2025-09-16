@@ -1,0 +1,11 @@
+<h1>Productos (render del servidor)</h1>
+<div class="grid">
+  {{#each products}}
+    <article class="card">
+      <h3>{{this.title}}</h3>
+      <p>{{this.description}}</p>
+      <p><b>${{this.price}}</b> | Stock: {{this.stock}}</p>
+      <small>code: {{this.code}} · id: {{this.id}}</small>
+    </article>
+  {{/each}}
+</div>
