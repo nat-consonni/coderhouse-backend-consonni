@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>{{title}} | Coderhouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 24px; }
+    header, footer { margin-bottom: 12px; }
+    nav a { margin-right: 12px; }
+    .grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; }
+    form > * { margin: 4px 0; }
+    .error { color: #b00020; margin-top: 8px; }
+    input, button { padding: 6px 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/realtimeproducts">Tiempo real</a>
+    </nav>
+  </header>
+
+  {{{body}}}
+
+  <footer>
+    <small>Coderhouse - Backend I</small>
+  </footer>
+</body>
+</html>
