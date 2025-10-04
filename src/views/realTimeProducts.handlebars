@@ -34,7 +34,8 @@
       <h3>{{this.title}}</h3>
       <p>{{this.description}}</p>
       <p><b>${{this.price}}</b> | Stock: {{this.stock}}</p>
-      <small>code: {{this.code}} · id: {{this.id}}</small>
+      <small>code: {{this.code}} · id: <code>{{this._id}}</code></small>
+      <button class="btn-delete-card" data-id="{{this._id}}">Eliminar</button>
     </article>
   {{/each}}
 </div>

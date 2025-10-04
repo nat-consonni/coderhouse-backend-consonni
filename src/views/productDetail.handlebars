@@ -1,0 +1,89 @@
+<section class="container">
+  <a href="/products">← Volver a productos</a>
+
+  <header class="mt-3">
+    <h1>{{product.title}}</h1>
+    <p class="muted">Categoría: <b>{{product.category}}</b> · Código: {{product.code}}</p>
+  </header>
+
+  <article class="card mt-2">
+    <p>{{product.description}}</p>
+    <p><b>Precio: ${{product.price}}</b></p>
+    <p>Stock: {{product.stock}} · Disponible: {{#if product.status}}Sí{{else}}No{{/if}}</p>
+
+    {{#if product.thumbnails.length}}
+      <div class="thumbs">
+        {{#each product.thumbnails}}
+          <img src="{{this}}" alt="thumb" />
+        {{/each}}
+      </div>
+    {{/if}}
+  </article>
+
+  <section class="card mt-3">
+    <h3>Agregar al carrito</h3>
+    <div class="row">
+      <label for="qty">Cantidad</label>
+      <input id="qty" type="number" min="1" value="1" />
+    </div>
+    <small id="currentCart" class="muted"></small>
+    <div class="row mt-2">
+      <button id="btnAdd" data-pid="{{product._id}}">Agregar</button>
+    </div>
+    <p id="msg" class="muted mt-2"></p>
+  </section>
+</section>
+
+<script>
+  // Guardamos/reutilizamos un cartId en localStorage para las pruebas
+  const CART_KEY = "cartId";
+  const pid = document.getElementById("btnAdd").dataset.pid;
+  const qtyInput = document.getElementById("qty");
+  const msg = document.getElementById("msg");
+  const currentCart = document.getElementById("currentCart");
+
+  async function ensureCartId() {
+    let cid = localStorage.getItem(CART_KEY);
+    if (!cid) {
+      const r = await fetch("/api/carts", { method: "POST" });
+      const data = await r.json();
+      if (data?.payload?.id || data?.payload?._id) {
+        cid = data.payload.id || data.payload._id;
+        localStorage.setItem(CART_KEY, cid);
+      } else {
+        throw new Error(data?.error || "No se pudo crear el carrito");
+      }
+    }
+    return cid;
+  }
+
+  function showCartId(cid) {
+    currentCart.textContent = "Carrito actual: " + cid + " (guardado en tu navegador)";
+  }
+
+  document.getElementById("btnAdd").addEventListener("click", async () => {
+    msg.textContent = "";
+    try {
+      const cid = await ensureCartId();
+      showCartId(cid);
+      const quantity = Number(qtyInput.value) || 1;
+
+      const r = await fetch(`/api/carts/${cid}/product/${pid}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ quantity })
+      });
+
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || "Error al agregar");
+
+      msg.textContent = "Producto agregado ✅";
+    } catch (e) {
+      msg.textContent = "Error: " + e.message;
+    }
+  });
+
+  // mostrar el cartId si ya existe
+  const existing = localStorage.getItem(CART_KEY);
+  if (existing) showCartId(existing);
+</script>
