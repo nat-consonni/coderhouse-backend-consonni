@@ -18,8 +18,11 @@
   "author": "Natalia Consonni",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^4.19.2",
     "express-handlebars": "^8.0.3",
+    "mongoose": "^8.19.0",
+    "mongoose-paginate-v2": "^1.9.1",
     "socket.io": "^4.8.1"
   }
 }
